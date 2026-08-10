@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redline &amp; Ledger — Software Audits for Solo &amp; Small-Firm Practices</title>
+<meta name="description" content="Honest, tested reviews of contract AI, document automation, and business tools for solo lawyers, small firms, and consultants. No fluff, real pricing, clear verdicts.">
+<meta property="og:title" content="Redline & Ledger — Software Audits for Solo & Small-Firm Practices">
+<meta property="og:description" content="Honest, tested reviews of contract AI, document automation, and business tools for solo lawyers, small firms, and consultants.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23F1ECDD'/%3E%3Ctext x='50' y='68' font-size='60' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%23212B22'%3E%C2%A7%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1ECDD;
+    --paper-raised:#F8F4E8;
+    --ink:#212B22;
+    --ink-soft:#4B5548;
+    --redline:#B23A2E;
+    --redline-bg:#B23A2E14;
+    --approve:#3C6E4F;
+    --approve-bg:#3C6E4F14;
+    --seal:#A8752C;
+    --rule:#CBBFA0;
+    --rule-strong:#B7A97F;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--redline);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{content:"§";font-size:14px;}
+
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.12;
+    margin:0;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    border-bottom:1px solid var(--rule);
+    background:var(--paper);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:-.01em;
+  }
+  .brand span{color:var(--redline);}
+  .navlinks{
+    display:flex;
+    gap:28px;
+    font-size:14.5px;
+    font-weight:500;
+  }
+  .navlinks a{text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px;}
+  .navlinks a:hover{border-bottom-color:var(--redline);}
+  @media (max-width:720px){ .navlinks{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:76px 0 64px;border-bottom:1px solid var(--rule);}
+  .hero h1{
+    font-size:clamp(34px,5.4vw,58px);
+    margin-top:18px;
+    max-width:15ch;
+  }
+  del{
+    color:var(--ink-soft);
+    text-decoration:line-through;
+    text-decoration-color:var(--redline);
+    text-decoration-thickness:2px;
+    opacity:.55;
+  }
+  ins{
+    color:var(--approve);
+    text-decoration:none;
+    border-bottom:2px solid var(--approve);
+  }
+  .hero-sub{
+    max-width:52ch;
+    font-size:18px;
+    color:var(--ink-soft);
+    margin-top:22px;
+  }
+  .hero-actions{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13.5px;
+    letter-spacing:.03em;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:2px;
+    display:inline-block;
+  }
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{background:var(--redline);}
+  .btn-ghost{border:1px solid var(--rule-strong);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ink);}
+
+  /* ---------- Disclosure strip ---------- */
+  .disclosure{
+    background:var(--paper-raised);
+    border-bottom:1px solid var(--rule);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    padding:12px 0;
+  }
+
+  /* ---------- Method intro ---------- */
+  .intro{padding:60px 0;border-bottom:1px solid var(--rule);}
+  .intro-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:48px;}
+  @media (max-width:800px){ .intro-grid{grid-template-columns:1fr;} }
+  .intro-grid p{color:var(--ink-soft);font-size:15.5px;}
+  .intro-grid h2{font-size:26px;margin-bottom:16px;}
+
+  /* Margin comment / annotation bubble */
+  .comment{
+    position:relative;
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--seal);
+    padding:16px 18px;
+    font-size:14px;
+    color:var(--ink-soft);
+    border-radius:0 4px 4px 0;
+  }
+  .comment b{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--seal);
+    display:block;
+    margin-bottom:6px;
+  }
+
+  /* ---------- Clause cards (reviews) ---------- */
+  .reviews{padding:64px 0;border-bottom:1px solid var(--rule);}
+  .section-head{margin-bottom:44px;}
+  .section-head h2{font-size:30px;margin-top:14px;max-width:20ch;}
+
+  .clause{
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:36px;
+    padding:40px 0;
+    border-top:1px solid var(--rule);
+  }
+  .clause:last-child{border-bottom:1px solid var(--rule);}
+  @media (max-width:800px){ .clause{grid-template-columns:1fr;} }
+
+  .clause-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--redline);
+    margin-bottom:6px;
+  }
+  .clause h3{font-size:26px;margin-bottom:6px;}
+  .clause .tagline{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  .clause p{font-size:15.5px;color:var(--ink-soft);margin:0 0 14px;}
+  .clause p:last-of-type{margin-bottom:0;}
+
+  .spec-box{
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    padding:22px;
+    height:fit-content;
+  }
+  .spec-row{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px dashed var(--rule);
+    font-size:13.5px;
+  }
+  .spec-row:last-of-type{border-bottom:none;}
+  .spec-label{color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;font-size:12px;}
+  .spec-value{font-weight:600;text-align:right;}
+  .verdict-tag{
+    display:inline-block;
+    margin-top:16px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    padding:5px 10px;
+    background:var(--approve-bg);
+    color:var(--approve);
+    border:1px solid var(--approve);
+  }
+  .clause-cta{
+    margin-top:18px;
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding-bottom:2px;
+  }
+  .clause-cta:hover{color:var(--redline);border-color:var(--redline);}
+
+  /* ---------- Ledger (Navan) callout ---------- */
+  .ledger{padding:64px 0;border-bottom:1px solid var(--rule);background:var(--paper-raised);}
+  .ledger .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  @media (max-width:800px){ .ledger .wrap{grid-template-columns:1fr;} }
+  .ledger h2{font-size:28px;margin-top:14px;}
+  .ledger p{color:var(--ink-soft);font-size:15.5px;}
+
+  /* ---------- Comparison table ---------- */
+  .compare{padding:64px 0;border-bottom:1px solid var(--rule);}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:32px;}
+  th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--rule);vertical-align:top;}
+  th{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+  td.product{font-weight:700;font-family:'Fraunces',serif;font-size:16px;}
+  .diff-add{color:var(--approve);}
+  .diff-del{color:var(--redline);}
+  @media (max-width:720px){
+    table, thead, tbody, th, td, tr{display:block;}
+    thead{display:none;}
+    tr{border-bottom:2px solid var(--rule-strong);padding:14px 0;}
+    td{border:none;padding:6px 0;display:flex;justify-content:space-between;gap:12px;}
+    td::before{content:attr(data-label);font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);text-transform:uppercase;}
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq{padding:64px 0;border-bottom:1px solid var(--rule);}
+  .faq-item{border-top:1px solid var(--rule);padding:26px 0;}
+  .faq-item:last-child{border-bottom:1px solid var(--rule);}
+  .faq-item h3{font-size:18px;font-family:'Public Sans',sans-serif;font-weight:700;margin-bottom:10px;}
+  .faq-item p{color:var(--ink-soft);font-size:15px;margin:0;}
+
+  /* ---------- Footer ---------- */
+  footer{padding:48px 0 64px;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .foot-note{max-width:56ch;font-size:13.5px;color:var(--ink-soft);}
+  .foot-brand{font-family:'Fraunces',serif;font-weight:700;font-size:18px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">Redline <span>&amp;</span> Ledger</div>
+    <nav class="navlinks">
+      <a href="#reviews">Reviews</a>
+      <a href="#ledger">Operations</a>
+      <a href="#compare">Compare</a>
+      <a href="#faq">FAQ</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="disclosure">
+  <div class="wrap">
+    Independently tested. Some links below are affiliate links — if you sign up, we may earn a commission at no extra cost to you. It never changes our verdict.
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Software audits for solo &amp; small-firm practices</div>
+    <h1>Stop <del>guessing</del> <ins>comparing</ins> which software actually earns back its price.</h1>
+    <p class="hero-sub">We run the contracts, the invoices, and the expense reports through the tools ourselves — then write down what a one-person or five-person practice actually gets for the money.</p>
+    <div class="hero-actions">
+      <a href="#reviews" class="btn btn-primary">Read the reviews</a>
+      <a href="#compare" class="btn btn-ghost">Jump to comparison</a>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="wrap intro-grid">
+    <div class="eyebrow">Why trust this</div>
+    <div>
+      <h2>Built for the practice that can't afford a wrong purchase.</h2>
+      <p>Most software round-ups are written for enterprise legal departments with a procurement team and a six-month evaluation window. You don't have that. You have client work due Friday and a subscription budget you can recite from memory.</p>
+      <p>Every tool on this site was set up with a real free trial, tested against an actual contract or invoice workflow, and evaluated on one question: does this pay for itself inside a solo or small-firm budget, or is it enterprise software wearing a small-business price tag?</p>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The reviews</div>
+      <h2>Three tools, tested against real contract work.</h2>
+    </div>
+
+    <!-- Spellbook -->
+    <div class="clause">
+      <div>
+        <div class="clause-num">Clause 1 — Contract Review</div>
+        <h3>Spellbook</h3>
+        <div class="tagline">AI redlining, inside Microsoft Word</div>
+        <p>Spellbook drops an AI reviewer directly into the Word document you already use to send and receive contracts, instead of pulling you into a separate app. It reads the clause you're looking at, flags what's missing or unusual against your own playbook, and drafts a redline you can accept, edit, or reject line by line — the same motion as reviewing a colleague's markup.</p>
+        <p>For a solo lawyer or a two-person firm, the pitch is narrow and specific: it doesn't try to manage your whole contract lifecycle, it makes the highest-billable-hour task — first-pass review — faster. That narrowness is why it's worth testing before a heavier CLM platform.</p>
+        <p><strong>Best for:</strong> solo practitioners and small firms doing high volumes of NDAs, MSAs, and vendor agreements who live in Word already.</p>
+        <span class="verdict-tag">Worth the trial</span><br>
+        <a href="https://www.spellbook.legal" target="_blank" rel="noopener" class="clause-cta">Try Spellbook's free trial →</a>
+      </div>
+      <div class="spec-box">
+        <div class="spec-row"><span class="spec-label">Starting price</span><span class="spec-value">~$100 / user / mo</span></div>
+        <div class="spec-row"><span class="spec-label">Setup time</span><span class="spec-value">Under 30 min</span></div>
+        <div class="spec-row"><span class="spec-label">Where it lives</span><span class="spec-value">Microsoft Word</span></div>
+        <div class="spec-row"><span class="spec-label">Free trial</span><span class="spec-value">Yes</span></div>
+        <div class="spec-row"><span class="spec-label">Contract required</span><span class="spec-value">No, monthly</span></div>
+      </div>
+    </div>
+
+    <!-- PandaDoc -->
+    <div class="clause">
+      <div>
+        <div class="clause-num">Clause 2 — Proposals, Contracts &amp; Signing</div>
+        <h3>PandaDoc</h3>
+        <div class="tagline">Send it, sign it, get paid — one thread</div>
+        <p>Where Spellbook is a scalpel for the review step, PandaDoc is the whole pipeline after the contract is agreed: templated proposals, e-signature, and — for firms that bill on delivery — payment collection tied to the signed document. It's less "legal AI" and more "the paperwork stops living in three different inboxes."</p>
+        <p>For a consultant or small firm sending the same three document types on repeat — engagement letters, retainers, statements of work — the templating is where the time actually gets saved, not the AI layer.</p>
+        <p><strong>Best for:</strong> consultants and small firms who want one place to send, sign, and get paid on standard documents.</p>
+        <span class="verdict-tag">Worth the trial</span><br>
+        <a href="https://www.pandadoc.com" target="_blank" rel="noopener" class="clause-cta">See PandaDoc plans →</a>
+      </div>
+      <div class="spec-box">
+        <div class="spec-row"><span class="spec-label">Starting price</span><span class="spec-value">~$19–$49 / user / mo</span></div>
+        <div class="spec-row"><span class="spec-label">Setup time</span><span class="spec-value">1–2 hours (templates)</span></div>
+        <div class="spec-row"><span class="spec-label">Where it lives</span><span class="spec-value">Browser, own app</span></div>
+        <div class="spec-row"><span class="spec-label">Free trial</span><span class="spec-value">Yes, 14 days</span></div>
+        <div class="spec-row"><span class="spec-label">Contract required</span><span class="spec-value">No, monthly or annual</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="ledger" id="ledger">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Beyond the contract</div>
+      <h2>The other line item quietly eating your week: expenses.</h2>
+      <p>Contract tools get the attention, but for firms that travel to clients, court, or conferences, manual expense reporting is its own tax on billable time. Navan folds travel booking and expense tracking into one line, so a receipt photographed from a taxi turns into a categorized expense report without a spreadsheet in between.</p>
+      <p>This isn't a legal-specific tool — it's a general small-business fix — but it earns its place here because it solves the same underlying problem as the two tools above: paperwork that shouldn't need a dedicated afternoon.</p>
+      <a href="https://navan.com" target="_blank" rel="noopener" class="clause-cta">See how Navan handles firm travel →</a>
+    </div>
+    <div class="spec-box">
+      <div class="spec-row"><span class="spec-label">Category</span><span class="spec-value">Travel &amp; expense</span></div>
+      <div class="spec-row"><span class="spec-label">Pricing model</span><span class="spec-value">Free base plan; travel booking fees vary</span></div>
+      <div class="spec-row"><span class="spec-label">Setup time</span><span class="spec-value">Same day</span></div>
+      <div class="spec-row"><span class="spec-label">Best for</span><span class="spec-value">Firms with regular client or court travel</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="compare" id="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Side by side</div>
+      <h2>The redline: what actually differs.</h2>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Best for</th>
+          <th>Starting price</th>
+          <th>Free trial</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="product" data-label="Tool">Spellbook</td>
+          <td data-label="Best for">First-pass contract review in Word</td>
+          <td data-label="Starting price">~$100/user/mo</td>
+          <td data-label="Free trial">Yes</td>
+          <td data-label="Verdict" class="diff-add">Best if you review contracts daily</td>
+        </tr>
+        <tr>
+          <td class="product" data-label="Tool">PandaDoc</td>
+          <td data-label="Best for">Proposals, e-signature, payment collection</td>
+          <td data-label="Starting price">~$19–$49/user/mo</td>
+          <td data-label="Free trial">Yes, 14 days</td>
+          <td data-label="Verdict" class="diff-add">Best if you send the same documents weekly</td>
+        </tr>
+        <tr>
+          <td class="product" data-label="Tool">Navan</td>
+          <td data-label="Best for">Travel booking &amp; expense reports</td>
+          <td data-label="Starting price">Free base plan</td>
+          <td data-label="Free trial">N/A — free to start</td>
+          <td data-label="Verdict" class="diff-del">Only if you travel for clients or court</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Questions we keep getting</div>
+      <h2>Before you switch anything.</h2>
+    </div>
+
+    <div class="faq-item">
+      <h3>Does a solo lawyer actually need AI contract software?</h3>
+      <p>Only if first-pass review is a real chunk of your billable week. If you review fewer than a handful of contracts a month, the time saved won't outpace the subscription cost — a template library might do the job instead.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is PandaDoc good enough to replace a lawyer's engagement-letter process?</h3>
+      <p>For standard engagement letters and retainers, yes — the templating and e-signature cover it. For anything requiring clause-by-clause negotiation, pair it with a review tool like Spellbook rather than expecting PandaDoc to redline for you.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How much does Navan cost for a two-person firm?</h3>
+      <p>The core expense and booking platform has a free tier; you mainly pay through the travel booked, not a flat software fee. It only makes sense if travel is a recurring cost, not an occasional one.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I use these tools together, or should I pick one?</h3>
+      <p>They cover different steps — Spellbook for review, PandaDoc for sending and signing, Navan for travel — so there's no overlap that would make running more than one wasteful. Start with whichever step costs you the most hours today.</p>
+    </div>
+  </div>
+</section>
+
+<section class="intro" id="about" style="border-bottom:1px solid var(--rule);">
+  <div class="wrap intro-grid">
+    <div class="eyebrow">Who's behind this</div>
+    <div>
+      <h2 style="font-size:26px;margin-bottom:16px;">One person, testing the tools she'd want a straight answer on.</h2>
+      <p>Redline &amp; Ledger is written and maintained by Aleksandra, based in Belgrade. This started because most software reviews for legal and small-business tools are written for enterprise buyers with a procurement team — not for a solo practice deciding whether a $100/month tool is worth it this quarter.</p>
+      <p>Every review here comes from an actual trial account, not a press kit. Have a tool you'd like tested, or a correction to something above? Reach out at <a href="mailto:hello@redlineandledger.com" style="border-bottom:1px solid var(--ink);text-decoration:none;">hello@redlineandledger.com</a>.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">Redline <span style="color:var(--redline)">&amp;</span> Ledger</div>
+    <p class="foot-note">Redline &amp; Ledger is an independent review site. We are not affiliated with, employed by, or endorsed by the companies reviewed. Pricing and program terms change — always confirm current numbers on the provider's site before buying. Affiliate links help fund testing; they never determine the verdict. Read our full <a href="disclosure.html" style="color:inherit;">Affiliate Disclosure &amp; Privacy Policy</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
